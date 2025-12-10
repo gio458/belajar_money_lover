@@ -1,193 +1,192 @@
-/* Styling CSS untuk public/css/auth.css */
+/* ===============================
+   AUTH STYLE — FULL NEON BACKGROUND
+================================= */
 
-/* --- Variabel Dasar --- */
+/* --- Variabel Warna --- */
 :root {
-    --purple-dark: #1a0033;
-    --purple-light: #5d1796;
-    --grey-input: #e9e9e9;
-    --text-color: #333;
-    --error-color: #e74c3c;
+    --dark-bg-1: #0f0f1a;
+    --dark-bg-2: #141422;
+    --blue-neon: #5d7bff;
+    --blue-neon-soft: #4a63e6;
+    --input-grey: #dcdcdc;
 }
 
-/* --- Pengaturan Global --- */
+/* --- GLOBAL FULL BACKGROUND --- */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5; 
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+
+    /* background gradient dari side-banner */
+    background: linear-gradient(120deg, var(--dark-bg-1), var(--dark-bg-2));
     min-height: 100vh;
-    display: flex;
-}
 
-/* --- Halaman Pendaftaran Utama --- */
-.register-page {
-    display: flex;
-    min-height: 100vh; 
-    width: 100%;
-}
-
-/* --- Bagian Kiri: Side Banner --- */
-.side-banner {
-    flex: 1; 
-    /* Gradient Ungu yang gelap */
-    background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple-dark) 100%); 
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 5%;
-    position: relative;
-    overflow: hidden; 
-}
-/* Efek Garis Ungu (Mirip di Screenshot) */
-.side-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 250%; /* Membuat garis diagonal panjang */
-    height: 100%;
-    /* Menggunakan background dengan opacity rendah untuk efek garis */
-    background: repeating-linear-gradient(
-        -55deg,
-        rgba(255,255,255,0.05),
-        rgba(255,255,255,0.05) 5px,
-        transparent 5px,
-        transparent 10px
-    );
-    opacity: 0.2;
-    transform: skewX(-15deg); /* Membuat garis miring */
-}
-
-.side-banner h1 {
-    font-size: 48px; 
-    margin-bottom: 5px;
-    z-index: 1;
-}
-.side-banner p {
-    font-size: 18px;
-    opacity: 0.8;
-    z-index: 1;
-}
-
-/* --- Bagian Kanan: Formulir Kontainer --- */
-.register-form-container {
-    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f8f8;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Neon diagonal line (dipindah dari side-banner) */
+body::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 200%;
+    height: 200%;
+    z-index: 0;
+
+    background: repeating-linear-gradient(
+        140deg,
+        rgba(90,120,255,0.25) 0px,
+        rgba(90,120,255,0.25) 5px,
+        transparent 5px,
+        transparent 25px
+    );
+    opacity: 0.2;
+}
+
+/* ===============================
+   CARD LOGIN / REGISTER
+================================= */
 .register-card {
-    background-color: white;
-    padding: 50px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    width: 90%; 
-    max-width: 450px;
+    width: 420px;
+    background: #fff;
+    padding: 50px 65px 40px 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    text-align: left;
+    position: relative;
+    margin-left: 20cm;
+    z-index: 2;
 }
 
 .register-card h2 {
+    text-align: center;
     font-size: 28px;
-    color: var(--text-color);
-    margin-bottom: 30px;
     font-weight: 600;
+    margin-bottom: 35px;
 }
 
-/* Input Styling */
+/* ===============================
+   INPUT STYLE
+================================= */
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
+
 .input-group label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
     display: block;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 8px;
 }
+
 .input-group input {
     width: 100%;
-    padding: 12px 15px;
-    border: none; /* Hilangkan border asli */
-    border-radius: 8px;
-    box-sizing: border-box;
+    padding: 13px 15px;
+    border: none;
+    background: var(--input-grey);
+    border-radius: 10px;
     font-size: 16px;
-    /* Gaya kotak abu-abu sesuai screenshot */
-    background-color: var(--grey-input); 
-    color: var(--text-color);
+    outline: none;
+    transition: 0.2s;
 }
+
 .input-group input:focus {
-    outline: 2px solid var(--purple-light);
-    background-color: white;
+    background: white;
+    outline: 2px solid var(--blue-neon);
 }
 
-/* Tombol Register */
+/* ===============================
+   BUTTON GRADIENT BLUE
+================================= */
 .btn-register {
-    width: 60%; 
+    width: 80%;
     display: block;
-    margin: 30px auto 20px auto; /* Pusatkan tombol */
-    padding: 12px;
-    background-color: white;
-    color: var(--text-color);
-    border: 1px solid var(--text-color); 
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    margin: 30px auto 10px auto;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s;
-}
-.btn-register:hover {
-    background-color: var(--text-color);
+
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
     color: white;
+
+    box-shadow: 0 5px 18px rgba(0,114,255,0.4);
+    transition: 0.3s ease;
 }
 
-/* Teks dan Link */
+.btn-register:hover {
+    opacity: 0.92;
+    box-shadow: 0 7px 20px rgba(0,114,255,0.55);
+}
+
+/* ===============================
+   LOGIN LINK
+================================= */
 .login-link {
-    margin-top: 20px;
     text-align: center;
     font-size: 14px;
+    margin-top: 15px;
 }
+
 .login-link a {
-    color: var(--purple-light);
+    color: #0072ff;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
-}
-.error-text {
-    color: var(--error-color);
-    font-size: 12px;
-    margin-top: 5px;
-}
-.alert-error {
-    background-color: #fdd;
-    color: var(--error-color);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-size: 14px;
 }
 
+.login-link a:hover {
+    text-decoration: underline;
+}
 
-/* --- Responsif (Untuk tampilan mobile) --- */
-@media (max-width: 768px) {
-    .register-page {
-        flex-direction: column;
-    }
-    .side-banner {
-        height: 200px;
-        padding: 30px 10%;
-        text-align: center;
-        align-items: center;
-    }
-    .side-banner h1 {
-        font-size: 32px;
-    }
-    .side-banner p {
-        font-size: 16px;
-    }
-    .register-form-container {
-        padding: 40px 10%;
-    }
+/* ===============================
+   RESPONSIVE
+================================= */
+@media (max-width: 600px) {
     .register-card {
-        width: 100%;
+        width: 90%;
+        padding: 40px 30px;
+    }
+}
+
+.side-banner {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 3;
+}
+
+.side-banner h1 {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.side-banner p {
+    margin-top: 15px;
+    font-size: 22px;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .side-banner {
+        position: static;
+        transform: none;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .side-banner h1 {
+        font-size: 38px;
     }
 }

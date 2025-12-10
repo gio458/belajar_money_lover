@@ -1,0 +1,127 @@
+/* === CONTAINER UTAMA === */
+.spay-container {
+    padding: 40px 60px;
+    width: 100%;
+}
+
+/* === SWITCH BUTTON ATAS === */
+.btn-switch {
+    margin-bottom: 25px;
+}
+
+.btn-income,
+.btn-expense {
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+    font-size: 16px;
+}
+
+.btn-income {
+    background: #90d392;
+    color: #fff;
+}
+
+.btn-expense {
+    background: #e08888;
+    color: #fff;
+    margin-left: 10px;
+}
+
+/* ACTIVE STATE */
+.btn-income.active,
+.btn-expense.active {
+    box-shadow: 0 0 8px rgba(0,0,0,0.25);
+    transform: scale(1.02);
+}
+
+/* === FORM === */
+form {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-size: 18px;
+    margin-top: 18px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+form input {
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #d2d2d2;
+    outline: none;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+form input:focus {
+    border-color: #73b8f1;
+}
+
+/* === SAVE BUTTON === */
+.btn-save {
+    margin-top: 30px;
+    background: #73b8f1;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 200px;
+}
+
+.btn-save:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+/* === SIDEBAR ACTIVE STATE (Cyan) === */
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.sidebar ul li.active a {
+    color: #00eaff !important;
+    font-weight: 600;
+}
+
+.sidebar ul li.active i {
+    color: #00eaff !important;
+}
+
+.notify-box {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #00eaff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.35s ease;
+    z-index: 9999;
+}
+
+.notify-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+

@@ -1,71 +1,131 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Saldo-In Dashboard')</title>
-    
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}"> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Saldo-In</title>
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/document.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/history.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/spay.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/setting.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
+
 <body>
-    <div id="app-wrapper">
-        
-        <aside class="sidebar">
-            <div class="logo-section">
-                <span class="logo-icon">S</span>
-                <div class="logo-text">
-                    <strong>Saldo-In</strong>
-                    <small>Manage your money here</small>
-                </div>
-            </div>
-            
-            <nav class="main-menu">
-                <div class="menu-heading">Menu</div>
-                <a href="{{ route('dashboard') }}" class="nav-item active">
-                    <i class="icon-dashboard"></i> Dashboard
-                </a>
-                <a href="/documents" class="nav-item">
-                    <i class="icon-document"></i> My Document
-                </a>
-                <a href="/history" class="nav-item">
-                    <i class="icon-history"></i> History
-                </a>
-                <a href="/spay" class="nav-item">
-                    <i class="icon-pay"></i> S-Pay
-                </a>
-            </nav>
 
-            <nav class="settings-menu">
-                <div class="menu-heading">General</div>
-                <a href="/settings" class="nav-item">
-                    <i class="icon-setting"></i> Setting
-                </a>
-                {{-- Form Logout --}}
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="nav-item btn-logout">
-                        <i class="icon-logout"></i> Log out
-                    </button>
-                </form>
-            </nav>
-        </aside>
+<div class="layout-container">
 
-        <main class="main-content">
-            <header class="topbar">
-                <div class="user-profile">
-                    <i class="icon-mail"></i>
-                    <div class="avatar"></div>
-                    <div class="user-details">
-                        <span class="user-name">Nama User</span>
-                        <small class="user-email">emailuser@gmail.com</small>
-                    </div>
-                </div>
-            </header>
-            
-            <div class="content-body">
-                @yield('content')
-            </div>
-        </main>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="menu-title">Menu</div>
+
+        <ul>
+            <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}">
+                    <i class="fa fa-border-all"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="{{ request()->is('my-document') ? 'active' : '' }}">
+                <a href="{{ route('document.index') }}">
+                    <i class="fa fa-folder"></i> My Document
+                </a>
+            </li>
+
+            <li class="{{ request()->is('history') ? 'active' : '' }}">
+                <a href="{{ route('history.index') }}">
+                    <i class="fa fa-clock-rotate-left"></i> History
+                </a>
+            </li>
+
+            <li class="{{ request()->is('s-pay') ? 'active' : '' }}">
+                <a href="{{ route('spay.index') }}">
+                    <i class="fa fa-dollar-sign"></i> S-Pay
+                </a>
+            </li>
+        </ul>
+
+        <div class="bottom-menu">
+            <ul>
+                <li class="{{ request()->is('setting') ? 'active' : '' }}">
+                    <a href="{{ route('setting.setting') }}">
+                        <i class="fa fa-gear"></i> Setting
+                    </a>
+                </li>
+
+                <li class="menu-item" onclick="openLogoutModal()">
+                    <i class="icon-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></i> Log out
+                </li>
+            </ul>
+        </div>
     </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- Header top -->
+        <div class="top-header">
+            <i class="fa fa-envelope"></i>
+            <i class="fa fa-user-circle"></i>
+        </div>
+
+        <!-- Logo aplikasi -->
+       <div class="logo-app-area">
+        <div class="logo-circle">S</div>
+        <div>
+            <h2 class="page-title">
+                @yield('page_title_main')
+                <span class="title-blue">@yield('page_title_blue')</span>
+            </h2>
+            <p class="page-desc">@yield('page_description')</p>
+        </div>
+    </div>
+    <div id="logoutModal" class="modal-overlay">
+    <div class="modal-box-portrait">
+        
+        <div class="modal-icon">
+            <i class="logout-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></i>
+        </div>
+
+        <h2>Log Out?</h2>
+
+        <p>Are you sure you want to log out from this web?</p>
+        <p>You'll need to log in again to access your dashboard</p>
+
+        <div class="modal-buttons">
+            <button class="btn-cancel" onclick="closeLogoutModal()">Cancel</button>
+
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="btn-logout">Log Out</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!-- MAIN PAGE CONTENT -->
+        @yield('content')
+
+    </div>
+
+</div>
+
 </body>
+<script>
+function openLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'flex';
+}
+
+function closeLogoutModal() {
+    document.getElementById('logoutModal').style.display = 'none';
+}
+</script>
+
 </html>

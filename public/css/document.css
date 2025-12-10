@@ -1,0 +1,123 @@
+.document-wrapper {
+    padding: 25px;
+}
+
+.document-content {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    background: #7dd3fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 28px;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+.title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.subtitle {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.btn-add {
+    background: #3b82f6;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-add:hover {
+    background: #2563eb;
+}
+
+.table-container {
+    margin-top: 25px;
+    background: #f3f4f6;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.doc-table th {
+    text-align: left;
+    padding-bottom: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.doc-table td {
+    padding: 12px 0;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* ACTIVE CYAN */
+.sidebar ul li.active a {
+    color: #00eaff !important;
+    font-weight: 600;
+}
+
+/* ICON ikut color */
+.sidebar ul li.active i {
+    color: #00eaff !important;
+}
+
+.btn-download{
+    background:#2ecc71;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+    transition: all .2s;
+}
+
+.btn-download:hover{
+    background:#27ae60;
+    transform: translateY(-2px);
+}

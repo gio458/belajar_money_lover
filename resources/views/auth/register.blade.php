@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="register-page">
-        
+     <div class="auth-wrapper">
         <div class="side-banner">
             <h1>Create your Account</h1>
             <p>Manage your money!</p>
@@ -74,5 +74,6 @@
             </div>
         </div>
     </div>
+ </div>
 </body>
 </html>

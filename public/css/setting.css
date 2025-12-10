@@ -1,0 +1,103 @@
+.setting-wrapper {
+    padding: 40px 60px;
+}
+
+.setting-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.setting-logo {
+    width: 70px;
+    height: 70px;
+    background-color: #6CD3E1;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.setting-title {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.setting-grid {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.setting-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    width: 50%;
+    border: 1px solid #d8d8d8;
+}
+
+.setting-card h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.profile-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    background: #e5e5e5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.security-icon {
+    width: 100%;
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+.input-box {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background: #5964ff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.save-btn {
+    width: 100%;
+    margin-top: 10px;
+}

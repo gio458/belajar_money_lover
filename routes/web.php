@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\SpayController;
+use App\Http\Controllers\SettingController;
+ 
 // Pastikan AuthController sudah diimport dari namespace yang benar
 
 /*
@@ -47,3 +52,31 @@ Route::middleware('auth')->group(function () {
     // Anda akan menambahkan semua rute fungsionalitas inti (Transaksi, Anggaran, dll.) di sini:
     // Route::resource('transactions', TransactionController::class);
 });
+
+Route::get('/document', [DocumentController::class, 'index'])->name('document.index');
+
+//historyroute
+Route::resource('history', HistoryController::class);
+Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+Route::put('/history/{id}', [HistoryController::class, 'update'])->name('history.update');
+Route::delete('/history/{id}', [HistoryController::class, 'destroy'])->name('history.destroy');
+Route::get('/history/export', [HistoryController::class, 'exportExcel'])->name('history.export');
+
+
+//Spayroute
+Route::get('/spay', [SpayController::class, 'index'])->name('spay.index');
+Route::post('/spay/store', [SpayController::class, 'store'])->name('spay.store');
+
+//documentroute
+Route::get('/document/export', [DocumentController::class,'export'])
+     ->name('document.export');
+Route::get('/spay/{id}/download', [DocumentController::class, 'download'])->name('spay.download');
+Route::get('/document/download/{id}', [DocumentController::class, 'download'])
+     ->name('document.download');
+
+
+
+
+Route::get('/setting', [SettingController::class, 'index'])->name('setting.setting');
+
+

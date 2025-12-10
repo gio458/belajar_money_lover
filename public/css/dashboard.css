@@ -1,204 +1,360 @@
-/* --- Styling CSS untuk public/css/dashboard.css --- */
-
-/* Variabel Warna */
-:root {
-    --sidebar-bg: #0f1e38; /* Ungu gelap */
-    --red-card: #020080;
-    --accent-teal: #00e4c6;
-    --white: #ffffff;
-    --text-light: #b0a4c2;
-    --text-dark: #333333;
-    --bg-light: #f4f6f8;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: var(--bg-light);
+    background: #f4f4f4;
 }
 
-#app-wrapper {
+/* ======================= */
+/*        LAYOUT           */
+/* ======================= */
+
+.layout-container {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* 1. SIDEBAR STYLING */
+/* ======================= */
+/*        SIDEBAR          */
+/* ======================= */
+
 .sidebar {
     width: 250px;
-    background-color: var(--sidebar-bg);
-    color: var(--text-light);
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    height: 100%;
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    padding: 0 20px 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 20px;
-}
-.logo-icon {
-    font-size: 24px;
-    font-weight: bold;
-    background-color: var(--accent-teal);
-    color: var(--white);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    margin-right: 10px;
-}
-.logo-text strong { display: block; font-size: 18px; color: var(--white); }
-.logo-text small { color: var(--text-light); }
-
-/* Menu Navigasi */
-.menu-heading {
-    font-size: 12px;
-    color: var(--text-light);
-    padding: 10px 20px 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    color: var(--text-light);
-    text-decoration: none;
-    transition: background-color 0.2s;
-    font-size: 15px;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-}
-.nav-item:hover, .nav-item.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
-}
-
-.btn-logout {
-    color: var(--text-light);
-}
-
-/* Styling Ikon (Contoh Sederhana, Anda perlu menggunakan font icon atau SVG) */
-.nav-item i { margin-right: 10px; font-size: 18px; }
-
-
-/* 2. MAIN CONTENT & TOPBAR */
-.main-content {
-    margin-left: 250px; 
-    flex-grow: 1;
-    padding: 0 30px 30px;
-}
-
-.topbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 20px 0;
-    margin-bottom: 20px;
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    color: var(--text-dark);
-}
-.user-profile i.icon-mail { font-size: 24px; margin-right: 20px; color: #555; }
-.avatar {
-    width: 40px;
-    height: 40px;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-.user-details {
-    line-height: 1.2;
-}
-.user-name { font-weight: bold; display: block; }
-.user-email { font-size: 12px; color: #777; }
-
-
-/* 3. CARD RINGKASAN */
-.summary-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
-}
-
-.card {
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.balance-card, .expenditure-card, .income-card {
-    background-color: var(--purple-card);
-    color: var(--white);
+    background: linear-gradient(180deg, #2a2f92, #1a1c40);
+    color: white;
     padding: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.card-icon i {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: rgba(255, 255, 255, 0.7);
-}
-.card-label {
-    margin: 5px 0;
-    font-size: 14px;
+.sidebar .menu-title {
+    font-size: 16px;
+    margin-bottom: 25px;
     opacity: 0.8;
 }
-.card-amount {
-    font-size: 28px;
+
+.sidebar ul {
+    list-style: none;
+}
+
+/* LIST ITEM DEFAULT */
+.sidebar ul li {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    opacity: 0.9;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* LINK DEFAULT = PUTIH */
+.sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* HOVER */
+.sidebar ul li:hover,
+.sidebar ul li:hover a {
+    opacity: 1;
+    transform: translateX(4px);
+    color: #ffffff;
+}
+
+/* ACTIVE = CYAN */
+.sidebar ul li.active a {
+    color: #00eaff !important;  /* cyan */
+    font-weight: 600;
+}
+
+/* ACTIVE transform tetap sama */
+.sidebar ul li.active {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* ICON ikut warna text */
+.sidebar ul li i {
+    color: inherit;
+}
+
+.sidebar .bottom-menu {
+    margin-top: auto;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+
+/* ======================= */
+/*        CONTENT          */
+/* ======================= */
+
+.content {
+    flex: 1;
+    background: white;
+    padding: 40px 50px;
+    overflow-y: auto;
+}
+
+/* Header top */
+.top-header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.top-header i {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Logo App Area */
+.logo-app-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    background: #98e9ff;
+    color: #007c99;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    margin-right: 12px;
     font-weight: bold;
-    margin: 0;
+}
+
+/* ======================= */
+/*     DASHBOARD WRAPPER   */
+/* ======================= */
+
+.dashboard-wrapper {
+    padding: 20px 0;
+}
+
+.dashboard-content {
+    padding: 20px 30px;
 }
 
 
-/* 4. RIWAYAT TRANSAKSI */
-.transaction-history-card {
-    background-color: var(--white);
+
+/* ======================= */
+/*       SUMMARY CARDS     */
+/* ======================= */
+
+.summary-cards {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
-.transaction-history-card h3 {
+.summary-card {
+    background: #2e2f86; /* biru tua seperti di gambar */
+    color: white;
+    width: 230px;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+}
+
+.summary-card i {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.summary-card p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.summary-card h3 {
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+.summary-card .red {
+    color: #ff6d6d;
+}
+
+.summary-card .green {
+    color: #53d46b;
+}
+
+
+
+/* ======================= */
+/*       HISTORY CARD      */
+/* ======================= */
+
+.history-card {
+    border: 2px solid #3c7bd7;
+    padding: 25px;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.history-card h3 {
     font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
     margin-bottom: 20px;
 }
 
-.transaction-history-card table {
+/* Table */
+.history-card table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.transaction-history-card th, .transaction-history-card td {
-    padding: 12px 10px;
+.history-card th {
+    font-size: 15px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
 }
-.transaction-history-card th {
-    font-weight: 600;
-    color: #555;
-    text-transform: uppercase;
-    font-size: 12px;
+
+.history-card td {
+    padding: 10px 0;
+    font-size: 15px;
 }
-.transaction-history-card td {
-    color: var(--text-dark);
-}
+
 .text-right {
     text-align: right;
+}
+
+/* ======================= */
+/*        TABLE BOX        */
+/* ======================= */
+
+.table-box {
+    border: 2px solid #3c7bd7;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.table-box h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.table-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.table-box th {
+    text-align: left;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.table-box td {
+    padding: 10px 0;
+    font-size: 15px;
+} 
+.title-blue {
+    color: #00a0e6;
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* PORTRAIT MODAL */
+.modal-box-portrait {
+    background: #ffffff;
+    width: 360px;
+    padding: 30px 28px;
+    border-radius: 30px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: popUp 0.25s ease;
+}
+
+/* ICON — jarak dibuat lebih dekat */
+.modal-icon {
+    margin-bottom: 5px; 
+}
+
+.logout-icon {
+    font-size: 60px;
+    color: #4f46e5;
+}
+
+/* TEXT */
+.modal-box-portrait h2 {
+    font-size: 26px;
+    margin: 5px 0 10px 0;
+}
+
+.modal-box-portrait p {
+    font-size: 14px;
+    color: #555;
+    margin: 4px 0;
+}
+
+/* BUTTONS — sampingan (row) */
+.modal-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* CANCEL BUTTON */
+.btn-cancel {
+    flex: 1;
+    padding: 12px;
+    background: #f3f4f6;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* LOGOUT BUTTON */
+.btn-logout {
+    flex: 1;
+    padding: 12px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* ANIMATION */
+@keyframes popUp {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
 }
