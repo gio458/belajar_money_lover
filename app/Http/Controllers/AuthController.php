@@ -85,14 +85,14 @@ class AuthController extends Controller
 
         // 2. Buat User Baru
         User::create([
-            'name' => $request->username, // Menyimpan username ke kolom 'name'
+            'username' => $request->username, // Menyimpan username ke kolom 'name'
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password), // Wajib di-hash
         ]);
 
         // 3. Redirect ke halaman Login (sesuai permintaan Anda)
-        return redirect()->route('login')->with('status', 'Pendaftaran berhasil! Silakan masuk dengan akun Anda.');
+        return redirect()->route('login')->with('success', 'Pendaftaran berhasil! Silakan masuk dengan akun Anda.');
     }
     
     // --------------------------------------------------------------------

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SpayController;
 use App\Models\Spay ;
+use App\Models\Transaction;
 
 class SpayController extends Controller
 {
@@ -50,6 +51,14 @@ class SpayController extends Controller
             'amount' => $request->amount,
             'category' => $request->category,
             'note' => $request->note,
+            'date' => $request->date,
+        ]);
+
+        Transaction::create([
+            'user_id' => auth()->id(),
+            'report_name' => 'S-Pay: ' . ($request->note ?? 'Transaction'),
+            'type' => $request->type,
+            'amount' => $request->amount,
             'date' => $request->date,
         ]);
 

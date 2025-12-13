@@ -6,6 +6,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SpayController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\DashboardController;
  
 // Pastikan AuthController sudah diimport dari namespace yang benar
 
@@ -44,10 +45,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Rute di dalam grup ini HANYA dapat diakses oleh pengguna yang SUDAH LOGIN ('auth').
 Route::middleware('auth')->group(function () {
     // --- DASHBOARD ---
-    Route::get('/dashboard', function () {
-        // Ini akan diarahkan ke resources/views/dashboard/index.blade.php
-        return view('dashboard.index'); 
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
     
     // Anda akan menambahkan semua rute fungsionalitas inti (Transaksi, Anggaran, dll.) di sini:
     // Route::resource('transactions', TransactionController::class);
@@ -78,5 +78,7 @@ Route::get('/document/download/{id}', [DocumentController::class, 'download'])
 
 
 Route::get('/setting', [SettingController::class, 'index'])->name('setting.setting');
+Route::post('/setting/profile', [SettingController::class, 'updateProfile'])->name('setting.profile');
+Route::post('/setting/password', [SettingController::class, 'updatePassword'])->name('setting.password');
 
 

@@ -7,52 +7,73 @@
 @section('content')
 
 <div class="setting-wrapper">
-
     <div class="setting-grid">
 
         <!-- Profile Box -->
         <div class="setting-card">
             <h3>Profile</h3>
 
-            <div class="profile-photo-wrapper">
-                <div class="profile-photo">
-                    <i class="fa fa-user"></i>
+            <form method="POST" action="{{ route('setting.profile') }}" enctype="multipart/form-data">
+                @csrf
+
+                <div class="profile-photo-wrapper">
+                    <div class="profile-photo">
+                        @if(auth()->user()->photo)
+                            <img src="{{ asset('storage/'.auth()->user()->photo) }}">
+                        @else
+                            <i class="fa fa-user"></i>
+                        @endif
+                    </div>
+
+                    <input type="file" name="photo" id="photoInput" hidden>
+                    <button type="button" class="btn-primary"
+                        onclick="document.getElementById('photoInput').click()">
+                        Change Photo
+                    </button>
                 </div>
 
-                <button class="btn-primary">Change Photo</button>
-            </div>
+                <label>Username</label>
+                <input type="text" name="name" class="input-box"
+                       value="{{ auth()->user()->name }}" required>
 
-            <label>Username</label>
-            <input type="text" class="input-box">
+                <label>Email</label>
+                <input type="email" name="email" class="input-box"
+                       value="{{ auth()->user()->email }}" required>
 
-            <label>Email</label>
-            <input type="email" class="input-box">
-
-            <button class="btn-primary save-btn">Save Changes</button>
+                <button type="submit" class="btn-primary save-btn">
+                    Save Changes
+                </button>
+            </form>
         </div>
 
-        <!-- Security Box -->
+                <!-- Security Box -->
         <div class="setting-card">
             <h3>Security</h3>
 
-            <div class="security-icon">
-                <i class="fa fa-lock"></i>
-            </div>
+            <form method="POST" action="{{ route('setting.password') }}">
+                @csrf
 
-            <label>Current Password</label>
-            <input type="password" class="input-box">
+                <div class="security-icon">
+                    <i class="fa fa-lock"></i>
+                </div>
 
-            <label>New Password</label>
-            <input type="password" class="input-box">
+                <label>Current Password</label>
+                <input type="password" name="current_password" class="input-box" required>
 
-            <label>Confirm Password</label>
-            <input type="password" class="input-box">
+                <label>New Password</label>
+                <input type="password" name="password" class="input-box" required>
 
-            <button class="btn-primary save-btn">Update Password</button>
+                <label>Confirm Password</label>
+                <input type="password" name="password_confirmation" class="input-box" required>
+
+                <button type="submit" class="btn-primary save-btn">
+                    Update Password
+                </button>
+            </form>
         </div>
 
     </div>
-
 </div>
 
 @endsection
+

@@ -69,8 +69,9 @@
 
         <!-- Header top -->
         <div class="top-header">
-            <i class="fa fa-envelope"></i>
-            <i class="fa fa-user-circle"></i>
+            <a href="{{ route('setting.setting') }}" class="user-setting-link">
+                <i class="fa fa-user-circle"></i>
+            </a>
         </div>
 
         <!-- Logo aplikasi -->
